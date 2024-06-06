@@ -5,7 +5,7 @@ export const placeOrder = (token, subtotal) => async (dispatch, getState) => {
   const cartItems = getState().cartReducer.cartItems;
   try {
     const response = await axios.post(
-      "https://b613090d-2c6f-40c7-b9ec-e422643b6202-00-xss54i8vqm9n.pike.repl.co/api/orders/placeorder",
+      "api/orders/placeorder",
       {
         token,
         subtotal,
@@ -26,7 +26,7 @@ export const getUserOrders = () => async (dispatch, getState) => {
   dispatch({ type: "GET_USER_ORDERS_REQUEST" });
   try {
     const response = await axios.post(
-      "https://b613090d-2c6f-40c7-b9ec-e422643b6202-00-xss54i8vqm9n.pike.repl.co/api/orders/getuserorders",
+      "api/orders/getuserorders",
       { userid: currentUser._id },
     );
     console.log(response);
@@ -41,7 +41,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
   dispatch({ type: "GET_ALLORDERS_REQUEST" });
   try {
     const response = await axios.get(
-      "https://b613090d-2c6f-40c7-b9ec-e422643b6202-00-xss54i8vqm9n.pike.repl.co/api/orders/getallorders",
+      "orders/getallorders",
     );
     console.log(response);
     dispatch({ type: "GET_ALLORDERS_SUCCESS", payload: response.data });
@@ -54,7 +54,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
 export const deliverOrder = (orderid) => async (dispatch) => {
   try {
     const response = await axios.post(
-      "https://b613090d-2c6f-40c7-b9ec-e422643b6202-00-xss54i8vqm9n.pike.repl.co/api/orders/deliverorder",
+      "api/orders/deliverorder",
       { orderid },
     );
     console.log(response);
