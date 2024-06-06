@@ -60,7 +60,7 @@ export const deliverOrder = (orderid) => async (dispatch) => {
     console.log(response);
     alert("order delivered successfully");
     const orders = await axios.get(
-      "https://b613090d-2c6f-40c7-b9ec-e422643b6202-00-xss54i8vqm9n.pike.repl.co/api/orders/getallorders",
+      "api/orders/getallorders",
     );
     dispatch({ type: "GET_ALLORDERS_SUCCESS", payload: orders.data });
   } catch (error) {
